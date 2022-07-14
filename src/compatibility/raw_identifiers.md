@@ -1,17 +1,8 @@
-# Raw identifiers
+# 生の識別子
 
-Rust, like many programming languages, has the concept of "keywords".
-These identifiers mean something to the language, and so you cannot use them in
-places like variable names, function names, and other places.
-Raw identifiers let you use keywords where they would not normally be allowed.
-This is particularly useful when Rust introduces new keywords, and a library
-using an older edition of Rust has a variable or function with the same name
-as a keyword introduced in a newer edition.
+Rustには、多くのプログラミング言語と同様に、「キーワード」という概念があります。これらの識別子は言語にとって何か意味があるため、変数名や関数名などの場所では使えません。生の識別子を使えば、通常では許されない場所でもキーワードを使うことができます。これは、Rustが新しいキーワードを導入したときに、古いバージョンのRustを使っているライブラリが、新しいバージョンで導入されたキーワードと同じ名前の変数や関数を持っている場合に特に有効です。
 
-For example, consider a crate `foo` compiled with the 2015 edition of Rust that
-exports a function named `try`. This keyword is reserved for a new feature in
-the 2018 edition, so without raw identifiers, we would have no way to name the
-function.
+例えば、2015年版のRustでコンパイルしたクレート `foo` が、 `try` という名前の関数をエクスポートしているとします。このキーワードは2018年版の新機能のために予約されているため、生の識別子がなければ、この関数に名前を付ける方法がありません。
 
 ```rust,ignore
 extern crate foo;
@@ -21,7 +12,7 @@ fn main() {
 }
 ```
 
-You'll get this error:
+こんなエラーが出ます。
 
 ```text
 error: expected identifier, found keyword `try`
@@ -31,7 +22,7 @@ error: expected identifier, found keyword `try`
   |      ^^^ expected identifier, found keyword
 ```
 
-You can write this with a raw identifier:
+生の識別子でこのように書くことができます。
 
 ```rust,ignore
 extern crate foo;
